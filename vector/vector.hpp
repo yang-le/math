@@ -28,49 +28,46 @@ class vector: public std::vector<T>
 public:
 	vector& operator+=(const vector& rhs)
 	{
-		std::plus<T> add;
-		transform(this->begin(), this->end(), rhs.begin(), this->begin(), add);
+		transform(this->begin(), this->end(), rhs.begin(), this->begin(), std::plus<T>());
 		return *this;
 	}
 
 	vector& operator-=(const vector& rhs)
 	{
-		std::minus<T> sub;
-		transform(this->begin(), this->end(), rhs.begin(), this->begin(), sub);
+		transform(this->begin(), this->end(), rhs.begin(), this->begin(), std::minus<T>());
 		return *this;
 	}
 
 	vector& operator*=(const T& rhs)
 	{
-		std::multiplies<T> mul;
-		transform(this->begin(), this->end(), this->begin(), std::bind1st(mul, rhs));
+		transform(this->begin(), this->end(), this->begin(), std::bind1st(std::multiplies<T>(), rhs));
 		return *this;
 	}
 
 //	vector& operator/=(const vector& rhs);
 
-	const vector operator+(const vector& rhs)
+	const vector operator+(const vector& rhs) const
 	{
 		vector result = *this;
 		result += rhs;
 		return result;
 	}
 
-	const vector operator-(const vector& rhs)
+	const vector operator-(const vector& rhs) const
 	{
 		vector result = *this;
 		result -= rhs;
 		return result;
 	}
 
-	const vector operator*(const T& rhs)
+	const vector operator*(const T& rhs) const
 	{
 		vector result = *this;
 		result *= rhs;
 		return result;
 	}
 
-	const T operator*(const vector& rhs)
+	const T operator*(const vector& rhs) const
 	{
 		return inner_product(this->begin(), this->end(), rhs.begin(), static_cast<T>(0));
 	}
@@ -92,6 +89,7 @@ std::ostream& operator<<(std::ostream& os, const vector<U>& vec)
 	typename vector<U>::const_iterator i;
 	for (i = vec.begin(); i < vec.end() - 1; ++i)
 		os << *i << " ";
+
 	return os << *i;
 }
 
