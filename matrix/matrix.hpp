@@ -161,7 +161,7 @@ public:
 	{
 		matrix result = *this;
 		result.transpose();
-		return *this;
+		return result;
 	}
 
 private:
