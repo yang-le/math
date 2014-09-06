@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "vector/vector.hpp"
+#include "matrix/matrix.hpp"
 
 using namespace std;
 
@@ -27,6 +28,11 @@ int main(int argc, char** argv)
 	cout << vec * -2 << endl;
 
 	cout << vec * vec << endl;
+
+	vector<math::vector<int> > vv(3, vec);
+	math::matrix<int> mat(vv);
+
+	cout << mat << endl;
 
 	return 0;
 }
