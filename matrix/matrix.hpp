@@ -8,6 +8,13 @@
 #ifndef MATRIX_HPP_
 #define MATRIX_HPP_
 
+#include <vector>
+#include <ostream>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include "../vector/vector.hpp"
+
 namespace math
 {
 template <typename T>
@@ -16,8 +23,15 @@ class matrix
 	template <typename U>
 	friend std::ostream& operator<<(std::ostream&, const matrix<U>&);
 
+	template <typename U>
+	friend const matrix<U> operator*(const U&, const matrix<U>&);
+
 public:
-	matrix();
+	matrix()
+	{
+
+	}
+
 	matrix(const matrix& rhs)
 	{
 		*this = rhs;
@@ -26,6 +40,56 @@ public:
 	matrix(std::vector<vector<T> > vv)
 	{
 		m_vectors = vv;
+	}
+
+public:
+	matrix& operator+=(const matrix& rhs)
+	{
+		transform(m_vectors.begin(), m_vectors.end(), rhs.m_vectors.begin(), m_vectors.begin(), std::plus<vector<T> >());
+		return *this;
+	}
+
+	matrix& operator-=(const matrix& rhs)
+	{
+		transform(m_vectors.begin(), m_vectors.end(), rhs.m_vectors.begin(), m_vectors.begin(), std::minus<vector<T> >());
+		return *this;
+	}
+
+	matrix& operator*=(const T& rhs)
+	{
+		// i don't know how to imp it using transform, so
+		for (typename std::vector<vector<T> >::iterator i = m_vectors.begin(); i < m_vectors.end(); ++i)
+			(*i) *= rhs;
+
+		return *this;
+	}
+
+	const matrix operator+(const matrix& rhs) const
+	{
+		matrix result = *this;
+		result += rhs;
+		return result;
+	}
+
+	const matrix operator-(const matrix& rhs) const
+	{
+		matrix result = *this;
+		result -= rhs;
+		return result;
+	}
+
+	const matrix operator*(const T& rhs) const
+	{
+		matrix result = *this;
+		result *= rhs;
+		return result;
+	}
+
+	const matrix operator-() const
+	{
+		matrix result = *this;
+		result *= -1;
+		return result;
 	}
 
 private:
@@ -38,11 +102,18 @@ std::ostream& operator<<(std::ostream& os, const matrix<U>& mat)
 	typename std::vector<vector<U> >::const_iterator i;
 	for (i = mat.m_vectors.begin(); i < mat.m_vectors.end() - 1; ++i)
 		os << *i << std::endl;
+
 	return os << *i;
 }
 
+template <typename U>
+const matrix<U> operator*(const U& lhs, const matrix<U>& rhs)
+{
+	matrix<U> result = rhs;
+	result *= lhs;
+	return result;
 }
 
-
+}
 
 #endif /* MATRIX_HPP_ */

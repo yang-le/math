@@ -32,7 +32,15 @@ int main(int argc, char** argv)
 	vector<math::vector<int> > vv(3, vec);
 	math::matrix<int> mat(vv);
 
-	cout << mat << endl;
+	cout << -mat << endl << endl;
+
+	cout << mat + mat << endl << endl;
+
+	cout << mat - mat << endl << endl;
+
+	cout << 3 * mat << endl << endl;
+
+	cout << mat * -2 << endl << endl;
 
 	return 0;
 }
