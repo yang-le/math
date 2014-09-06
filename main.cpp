@@ -42,6 +42,14 @@ int main(int argc, char** argv)
 
 	cout << mat * -2 << endl << endl;
 
+	cout << mat[1] << endl << endl;
+
+	cout << mat.col(1) << endl << endl;
+
+	cout << mat.transpose() << endl << endl;
+
+	cout << mat * mat << endl << endl;
+
 	return 0;
 }
 

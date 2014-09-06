@@ -64,6 +64,14 @@ public:
 		return *this;
 	}
 
+	matrix& operator*=(const matrix& rhs)
+	{
+		std::vector<vector<T> > vv;
+		vector<T> row;
+		// use ugly for for
+		return *this;
+	}
+
 	const matrix operator+(const matrix& rhs) const
 	{
 		matrix result = *this;
@@ -85,11 +93,75 @@ public:
 		return result;
 	}
 
+	const matrix operator*(const matrix& rhs) const
+	{
+		matrix result = *this;
+		result *= rhs;
+		return result;
+	}
+
 	const matrix operator-() const
 	{
 		matrix result = *this;
 		result *= -1;
 		return result;
+	}
+
+	vector<T>& operator[](unsigned int index)
+	{
+		return m_vectors[index];
+	}
+
+	const vector<T>& operator[](unsigned int index) const
+	{
+		return m_vectors[index];
+	}
+
+public:
+	vector<T>& row(unsigned int index)
+	{
+		return m_vectors[index];
+	}
+
+	const vector<T>& row(unsigned int index) const
+	{
+		return m_vectors[index];
+	}
+
+	vector<T> col(unsigned int index)
+	{
+		vector<T> result;
+		// this seems ugly
+		for (typename std::vector<vector<T> >::iterator i = m_vectors.begin(); i < m_vectors.end(); ++i)
+			result.push_back((*i)[index]);
+		return result;
+	}
+
+	const vector<T> col(unsigned int index) const
+	{
+		vector<T> result;
+		// this seems ugly
+		for (typename std::vector<vector<T> >::iterator i = m_vectors.begin(); i < m_vectors.end(); ++i)
+			result.push_back((*i)[index]);
+		return result;
+	}
+
+	matrix& transpose()
+	{
+		std::vector<vector<T> > vv;
+		// this seems ugly
+		for (unsigned int i = 0; i < m_vectors[0].size(); ++i)
+			vv.push_back(col(i));
+
+		m_vectors = vv;
+		return *this;
+	}
+
+	const matrix transpose() const
+	{
+		matrix result = *this;
+		result.transpose();
+		return *this;
 	}
 
 private:
