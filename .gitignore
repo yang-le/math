@@ -1,3 +1,9 @@
+# eclipse files
+.settings
+Debug
+.cproject
+.project
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
