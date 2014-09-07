@@ -14,7 +14,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
 	math::vector<int> vec;
-	for (int i = 1; i < 10; ++i)
+	for (int i = 1; i < 4; ++i)
 		vec.push_back(i);
 
 	cout << -vec << endl;
@@ -44,11 +44,17 @@ int main(int argc, char** argv)
 
 	cout << mat[1] << endl << endl;
 
-	cout << mat.col(1) << endl << endl;
+	cout << mat.col(1, 2) << endl << endl;
+
+	cout << mat.row(1, 2) << endl << endl;
 
 	cout << mat.transpose() << endl << endl;
 
-	cout << mat * mat << endl << endl;
+	cout << mat * vec << endl << endl;
+
+	cout << vec * mat << endl << endl;
+
+	cout << mat << endl << endl;
 
 	return 0;
 }

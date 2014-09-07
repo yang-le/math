@@ -17,6 +17,9 @@
 namespace math
 {
 template <typename T>
+class matrix;
+
+template <typename T>
 class vector: public std::vector<T>
 {
 	template <typename U>
@@ -41,6 +44,13 @@ public:
 	vector& operator*=(const T& rhs)
 	{
 		transform(this->begin(), this->end(), this->begin(), std::bind1st(std::multiplies<T>(), rhs));
+		return *this;
+	}
+
+	vector& operator*=(const matrix<T>& rhs)
+	{
+		// not so good
+		*this = *this * rhs;
 		return *this;
 	}
 
@@ -72,6 +82,16 @@ public:
 		return inner_product(this->begin(), this->end(), rhs.begin(), static_cast<T>(0));
 	}
 
+	const vector operator*(const matrix<T>& rhs) const
+	{
+		vector result;
+		// i don't know how to imp it using transform, so
+		for (int i = 0; i < rhs.cols(); ++i)
+			result.push_back(*this * rhs.col(i));
+
+		return result;
+	}
+
 //	const vector operator*(const vector& rhs);
 //	const vector operator/(const vector& rhs);
 
@@ -86,6 +106,8 @@ public:
 template <typename U>
 std::ostream& operator<<(std::ostream& os, const vector<U>& vec)
 {
+	if (vec.empty()) return os;
+
 	typename vector<U>::const_iterator i;
 	for (i = vec.begin(); i < vec.end() - 1; ++i)
 		os << *i << " ";
