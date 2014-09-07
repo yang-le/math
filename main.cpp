@@ -50,10 +50,6 @@ int main(int argc, char** argv)
 
 	cout << mat.transpose() << endl << endl;
 
-	cout << mat * vec << endl << endl;
-
-	cout << vec * mat << endl << endl;
-
 	cout << mat << endl << endl;
 
 	return 0;

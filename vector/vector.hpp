@@ -82,16 +82,6 @@ public:
 		return inner_product(this->begin(), this->end(), rhs.begin(), static_cast<T>(0));
 	}
 
-	const vector operator*(const matrix<T>& rhs) const
-	{
-		vector result;
-		// i don't know how to imp it using transform, so
-		for (int i = 0; i < rhs.cols(); ++i)
-			result.push_back(*this * rhs.col(i));
-
-		return result;
-	}
-
 //	const vector operator*(const vector& rhs);
 //	const vector operator/(const vector& rhs);
 

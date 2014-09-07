@@ -95,16 +95,6 @@ public:
 		return result;
 	}
 
-	const vector<T> operator*(const vector<T>& rhs) const
-	{
-		vector<T> result;
-		// i don't know how to imp it using transform, so
-		for (typename std::vector<vector<T> >::const_iterator i = begin(); i < end(); ++i)
-			result.push_back((*i) * rhs);
-
-		return result;
-	}
-
 	const matrix operator*(const matrix& rhs) const
 	{
 		matrix result = *this;
@@ -157,9 +147,8 @@ public:
 
 	const matrix row(unsigned int start, unsigned int end) const
 	{
-		std::vector<vector<T> > vv;
-		for (int i = start; i != end + 1; (start < end + 1) ? ++i : --i)
-			vv.push_back(m_vectors[i]);
+		std::vector<vector<T> > vv(end - start + 1);
+		copy(begin() + start, begin() + end + 1, vv.begin());
 
 		matrix result(vv);
 		return result;
