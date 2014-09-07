@@ -9,11 +9,15 @@
 #include "vector/vector.hpp"
 #include "matrix/matrix.hpp"
 #include "matrix/squareMatrix.hpp"
+#include "fraction/fraction.hpp"
 
 using namespace std;
 
 int main(int argc, char** argv)
 {
+	math::fraction<int> frac(23, 43);
+	cout << frac << endl;
+
 	math::vector<int> vec;
 	for (int i = 1; i < 4; ++i)
 		vec.push_back(i);
