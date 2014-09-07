@@ -8,6 +8,7 @@
 #include <iostream>
 #include "vector/vector.hpp"
 #include "matrix/matrix.hpp"
+#include "matrix/squareMatrix.hpp"
 
 using namespace std;
 
@@ -30,7 +31,7 @@ int main(int argc, char** argv)
 	cout << vec * vec << endl;
 
 	vector<math::vector<int> > vv(3, vec);
-	math::matrix<int> mat(vv);
+	math::squareMatrix<int> mat(vv);
 
 	cout << -mat << endl << endl;
 
