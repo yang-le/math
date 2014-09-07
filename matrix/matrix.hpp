@@ -69,8 +69,17 @@ public:
 	matrix& operator*=(const matrix& rhs)
 	{
 		std::vector<vector<T> > vv;
-		vector<T> row;
-		// use ugly for for
+		vector<T> r;
+
+		for (unsigned int i = 0; i < rows(); ++i) {
+			for (unsigned int j = 0; j < rhs.cols(); ++j)
+				r.push_back(row(i) * rhs.col(j));
+
+			vv.push_back(r);
+			r.clear();
+		}
+
+		m_vectors = vv;
 		return *this;
 	}
 
