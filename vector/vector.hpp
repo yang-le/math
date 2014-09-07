@@ -29,6 +29,12 @@ class vector: public std::vector<T>
 	friend const vector<U> operator*(const U&, const vector<U>&);
 
 public:
+	vector() {}
+
+	vector(unsigned int n, const T& value = T())
+	:std::vector<T>(n, value) {}
+
+public:
 	vector& operator+=(const vector& rhs)
 	{
 		transform(this->begin(), this->end(), rhs.begin(), this->begin(), std::plus<T>());
@@ -79,7 +85,7 @@ public:
 
 	const T operator*(const vector& rhs) const
 	{
-		return inner_product(this->begin(), this->end(), rhs.begin(), static_cast<T>(0));
+		return inner_product(this->begin(), this->end(), rhs.begin(), T());
 	}
 
 //	const vector operator*(const vector& rhs);

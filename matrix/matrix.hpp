@@ -29,20 +29,10 @@ class matrix
 	friend const matrix<U> operator*(const U&, const matrix<U>&);
 
 public:
-	matrix()
-	{
-
-	}
-
-	matrix(const matrix& rhs)
-	{
-		*this = rhs;
-	}
+	matrix() {}
 
 	matrix(std::vector<vector<T> > vv)
-	{
-		m_vectors = vv;
-	}
+	:m_vectors(vv) {}
 
 public:
 	matrix& operator+=(const matrix& rhs)
