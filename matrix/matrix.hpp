@@ -50,8 +50,8 @@ public:
 	matrix& operator*=(const T& rhs)
 	{
 		// i don't know how to imp it using transform, so
-		for (typename std::vector<vector<T> >::iterator i = begin(); i < end(); ++i)
-			(*i) *= rhs;
+		for (auto &i : m_vectors)
+			i *= rhs;
 
 		return *this;
 	}
@@ -156,18 +156,18 @@ public:
 	vector<T> col(unsigned int index)
 	{
 		vector<T> result;
-		// this seems ugly
-		for (typename std::vector<vector<T> >::iterator i = begin(); i < end(); ++i)
-			result.push_back((*i)[index]);
+
+		for (auto &row : m_vectors)
+			result.push_back(row[index]);
 		return result;
 	}
 
 	const vector<T> col(unsigned int index) const
 	{
 		vector<T> result;
-		// this seems ugly
-		for (typename std::vector<vector<T> >::const_iterator i = begin(); i < end(); ++i)
-			result.push_back((*i)[index]);
+
+		for (auto &row : m_vectors)
+			result.push_back(row[index]);
 		return result;
 	}
 

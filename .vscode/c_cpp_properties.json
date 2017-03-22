@@ -4,6 +4,7 @@
             "name": "Mac",
             "includePath": [
                 "/usr/include",
+                "/usr/include/c++",
                 "/usr/local/include"
             ],
             "browse": {

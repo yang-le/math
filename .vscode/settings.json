@@ -19,6 +19,9 @@
         "streambuf": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "array": "cpp",
+        "slist": "cpp",
+        "functional": "cpp"
     }
 }
