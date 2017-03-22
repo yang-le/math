@@ -1,7 +1,7 @@
 /*
  * squareMatrix.hpp
  *
- *  Created on: 2014Äê9ÔÂ7ÈÕ
+ *  Created on:
  *      Author: yangle
  */
 

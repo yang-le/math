@@ -1,7 +1,7 @@
 /*
  * matrix.hpp
  *
- *  Created on: 2014Äê9ÔÂ6ÈÕ
+ *  Created on:
  *      Author: yangle
  */
 
