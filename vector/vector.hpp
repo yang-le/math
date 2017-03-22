@@ -29,12 +29,6 @@ class vector: public std::vector<T>
 	friend const vector<U> operator*(const U&, const vector<U>&);
 
 public:
-	// vector() {}
-
-	// vector(unsigned int n, const T& value = T())
-	// :std::vector<T>(n, value) {}
-
-public:
 	vector& operator+=(const vector& rhs)
 	{
 		transform(this->begin(), this->end(), rhs.begin(), this->begin(), std::plus<T>());
