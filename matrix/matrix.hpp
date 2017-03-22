@@ -31,19 +31,19 @@ class matrix
 public:
 	matrix() {}
 
-	matrix(std::vector<vector<T> > vv)
+	matrix(std::vector<vector<T>> vv)
 	:m_vectors(vv) {}
 
 public:
 	matrix& operator+=(const matrix& rhs)
 	{
-		transform(begin(), end(), rhs.begin(), begin(), std::plus<vector<T> >());
+		transform(begin(), end(), rhs.begin(), begin(), std::plus<vector<T>>());
 		return *this;
 	}
 
 	matrix& operator-=(const matrix& rhs)
 	{
-		transform(begin(), end(), rhs.begin(), begin(), std::minus<vector<T> >());
+		transform(begin(), end(), rhs.begin(), begin(), std::minus<vector<T>>());
 		return *this;
 	}
 

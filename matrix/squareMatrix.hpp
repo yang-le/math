@@ -19,7 +19,7 @@ class squareMatrix: public matrix<T>
 public:
 	squareMatrix() {}
 
-	squareMatrix(std::vector<vector<T> > vv)
+	squareMatrix(std::vector<vector<T>> vv)
 	:matrix<T>(vv) {}
 
 public:

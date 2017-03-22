@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 
 	cout << vec * vec << endl;
 
-	vector<math::vector<int> > vv(3, vec);
+	vector<math::vector<int>> vv(3, vec);
 	math::squareMatrix<int> mat(vv);
 
 	cout << -mat << endl << endl;
